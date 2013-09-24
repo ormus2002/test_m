@@ -1,16 +1,29 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div>ФИО<br />
+  <%= f.text_field :fio, :autofocus => true %><br /></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div>Дата рождения<br />
+  <%= f.date_select :dr, use_two_digit_numbers: true, start_year: 1900 %><br /></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div>Роль<br />
+    <%= f.semantic_fields_for :user_role do |builder| %>
+
+      <%= render 'user_role_fields', :f => builder %>
+    <% end %>
+  </div>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %><br /></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %><br /></div>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br /></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

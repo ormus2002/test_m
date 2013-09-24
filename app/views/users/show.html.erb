@@ -3,6 +3,7 @@
   <h1>
     <%= @user.fio %>
   </h1>
-  <p>email: <%= @user.email %></p>
+  <p>Email: <%= @user.email %></p>
   <p>Дата рождения: <%= @user.dr.to_s(:dr) %></p>
+  <p>Роль: <%= @user.role.name if !@user.role.nil? %></p>
 </div>
