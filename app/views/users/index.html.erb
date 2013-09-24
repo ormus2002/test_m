@@ -3,8 +3,25 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<div>
+  <table class="list">
+    <thead><tr>
+      <th>ФИО</th>
+      <th>Email</th>
+      <th>Роль</th>
+      <th>Дата рождения</th>
+    </tr></thead>
+    <tbody>
+    <% for user in @users %>
+        <tr>
+          <td><%= link_to user.fio, user %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role.name %></td>
+          <td><%= user.dr.to_s(:dr) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= will_paginate %>

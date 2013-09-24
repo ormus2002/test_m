@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :fio, :dr
 
+  validates :fio,  presence: true, length: { maximum: 50 }
+
+  has_one :user_role, :dependent => :destroy
+  has_one :role, :through => :user_role
+
 end

@@ -4,7 +4,6 @@
       <%= link_to "Пример", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Начало",   root_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to "Пользователи", users_path %></li>
             <li id="fat-menu" class="dropdown">

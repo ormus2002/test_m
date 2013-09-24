@@ -4,5 +4,5 @@
     <%= @user.fio %>
   </h1>
   <p>email: <%= @user.email %></p>
-  <p>Дата рождения: <%= @user.dr %></p>
+  <p>Дата рождения: <%= @user.dr.to_s(:dr) %></p>
 </div>
