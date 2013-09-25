@@ -3,13 +3,6 @@ TestM::Application.routes.draw do
   devise_for :users
   resources :users
 
-  #devise_scope :user do
-  #  get "/users/sign_out" => "devise/sessions#destroy"
-  #end 
-
-  #match 'users/sign_out', :to => 'users#sign_out', :via => :delete
-
-
   root to: 'static_pages#home'
 
 # The priority is based upon order of creation:

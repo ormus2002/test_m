@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class InsertBuiltinRoles < ActiveRecord::Migration
   def self.up
     Role.reset_column_information
