@@ -1,9 +1,9 @@
-<h2>Sign up</h2>
+<h2>Регистрация</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= render 'user_fields', f: f %>
+  <%= render 'shared/user_fields', f: f %>
 
   <div><%= f.label :email %>
   <%= f.email_field :email %></div>
@@ -14,7 +14,7 @@
   <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Зарегистрировать", class: "btn btn-large btn-primary" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

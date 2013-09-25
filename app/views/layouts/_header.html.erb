@@ -6,7 +6,7 @@
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <% if admin?(current_user) %>
-              <li><%= link_to "Администрирование", 'admin' %></li>
+              <li><%= link_to "Администрирование", '/admin' %></li>
             <% end %>
             <li><%= link_to "Пользователи", users_path %></li>
             <li id="fat-menu" class="dropdown">

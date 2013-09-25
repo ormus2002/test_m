@@ -3,6 +3,8 @@ TestM::Application.routes.draw do
   devise_for :users
   resources :users
 
+  resources :roles
+
   root to: 'static_pages#home'
 
   match '/admin', to: 'admin#index' 

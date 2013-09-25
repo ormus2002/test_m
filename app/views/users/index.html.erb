@@ -1,27 +1,41 @@
 <% provide(:title, 'Все пользователи') %>
-<h1>Все пользователи</h1>
 
-<%= will_paginate %>
-
-<div>
-  <table class="list">
-    <thead><tr>
-      <th>ФИО</th>
-      <th>Email</th>
-      <th>Роль</th>
-      <th>Дата рождения</th>
-    </tr></thead>
-    <tbody>
-    <% for user in @users %>
-        <tr>
-          <td><%= link_to user.fio, user %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role.name if !user.role.nil? %></td>
-          <td><%= user.dr.to_s(:dr) %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <%= render 'shared/menu' %>
+    </div>
+    <div class="span10">
+        <h3>Пользователи</h3>
+        <%= will_paginate %>
+        <div>
+          <table class="table table-hover">
+            <thead><tr>
+              <th>ФИО</th>
+              <th>Email</th>
+              <th>Роль</th>
+              <th>Дата рождения</th>
+            </tr></thead>
+            <tbody>
+            <% for user in @users %>
+                <tr>
+                  <td><%= link_to user.fio, user %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.role.name if !user.role.nil? %></td>
+                  <td><%= user.dr.to_s(:dr) %></td>
+                  <% if admin?(current_user) %>
+                  <td><%= link_to 'Редактировать', edit_user_path(user) %>
+                    <% if !current_user?(user) %>
+                      <%= link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены?" } %>
+                    <% end %>
+                  </td>
+                  <% end %>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <%= will_paginate %>
+    </div>
+  </div>
 </div>
-
-<%= will_paginate %>

@@ -1,0 +1,4 @@
+<%= form_for (@user) do |f| %>
+    <%= render 'shared/user_fields', f: f %>
+    <div><%= f.submit "Сохранить", class: "btn btn-large btn-primary" %></div>
+<% end %>

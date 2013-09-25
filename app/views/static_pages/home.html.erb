@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
-  <% @user = current_user %>
-  <%= render 'shared/user_show' %>
+  <%= render 'shared/home_signed' %>
 <% else %>
   <%= render 'shared/home_not_signed' %>
 <% end %>

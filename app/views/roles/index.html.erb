@@ -1,0 +1,31 @@
+<% provide(:title, 'Роли') %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <%= render 'shared/menu' %>
+    </div>
+    <div class="span10">
+      <h3>Роли</h3>
+      <div>
+        <table class="table table-hover">
+          <thead><tr>
+            <th>Роль</th>
+          </tr></thead>
+          <tbody>
+          <% for role in @roles %>
+              <tr>
+                <td><%= link_to role.name, role %></td>
+                <% if role.builtin == 0 %>
+                  <td><%= link_to 'Редактировать', edit_role_path(role) %>
+                  <%= link_to "Удалить", role, method: :delete, data: { confirm: "Вы уверены?" } %></td>
+                <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <p> <%= button_to "Новая роль", new_role_path, class: "btn btn-large" %></p>
+    </div>
+  </div>
+</div>

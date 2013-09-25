@@ -1,18 +1,10 @@
-<div class="row">
-  <aside class="span4">
-    <section>
-      <%= link_to "Пользователи", users_path %>
-    </section>
-    <section>
-      <%= link_to "Роли", 'roles' %>
-    </section>
-    <section>
-      <%= link_to "Группы", 'groups' %>
-    </section>
-    
-  </aside>
-  <div class="span8">
-    <h3>Пользователи</h3>
-    <%= render 'users' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <%= render 'shared/menu' %>
+    </div>
+    <div class="span10">
+      <!--Body content-->
+    </div>
   </div>
 </div>

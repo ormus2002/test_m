@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def admin?(user)
-    user.role.name == 'Администратор'
+    !user.role.nil? && user.role.name == 'Администратор'
   end
 
 end
