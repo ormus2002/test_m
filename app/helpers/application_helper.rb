@@ -11,4 +11,8 @@ module ApplicationHelper
     end
   end
 
+  def admin?(user)
+    user.role.name == 'Администратор'
+  end
+
 end

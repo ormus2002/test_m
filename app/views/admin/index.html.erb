@@ -1,0 +1,18 @@
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= link_to "Пользователи", users_path %>
+    </section>
+    <section>
+      <%= link_to "Роли", 'roles' %>
+    </section>
+    <section>
+      <%= link_to "Группы", 'groups' %>
+    </section>
+    
+  </aside>
+  <div class="span8">
+    <h3>Пользователи</h3>
+    <%= render 'users' %>
+  </div>
+</div>
