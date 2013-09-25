@@ -15,4 +15,7 @@ module ApplicationHelper
     !user.role.nil? && user.role.name == 'Администратор'
   end
 
+  def current_user?(user)
+    user == current_user
+  end
 end
