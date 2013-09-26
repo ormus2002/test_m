@@ -1,5 +1,7 @@
+<% if admin?(current_user) %>
 <ul class="nav nav-list">
   <li><%= link_to "Пользователи", users_path %></li>
   <li><%= link_to "Группы", 'groups' %></li>
-  <li><%= link_to "Роли", 'roles' if admin?(current_user) %></li>
+  <li><%= link_to "Роли", roles_path %></li>
 </ul>
+<% end %>

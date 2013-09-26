@@ -1,6 +1,8 @@
+# -*- encoding : utf-8 -*-
 class RolesController < ApplicationController
   before_filter :check_if_admin
-  
+  before_filter :check_if_builtin,  only: [:edit, :update, :destroy]
+
   def index
     @roles = Role.all
   end
@@ -14,7 +16,7 @@ class RolesController < ApplicationController
   end
 
   def edit
-    @role = Role.find(params[:id])
+    
   end
 
   def update
@@ -36,4 +38,15 @@ class RolesController < ApplicationController
     end
   end
 
+  def destroy
+    Role.find(params[:id]).destroy
+    flash[:success] = "Роль удалена."
+    redirect_to roles_path
+  end
+
+  private
+    def check_if_builtin
+      @role = Role.find(params[:id])       
+      render_403 unless @role.builtin == 0
+    end
 end

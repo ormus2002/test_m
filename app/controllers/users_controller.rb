@@ -1,6 +1,7 @@
+# -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_if_admin,  only: [:edit, :update]
+  before_filter :check_if_admin,  only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page])

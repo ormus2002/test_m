@@ -1,0 +1,6 @@
+<h2>Создание роли</h2>
+<%= form_for (@role) do |f| %>
+  <div>Наименование<br />
+    <%= f.text_field :name, :autofocus => true %></div>
+  <div><%= f.submit "Сохранить", class: "btn btn-large btn-primary" %></div>
+<% end %>

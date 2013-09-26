@@ -23,13 +23,13 @@
                   <td><%= user.email %></td>
                   <td><%= user.role.name if !user.role.nil? %></td>
                   <td><%= user.dr.to_s(:dr) %></td>
-                  <% if admin?(current_user) %>
-                  <td><%= link_to 'Редактировать', edit_user_path(user) %>
+                  <td><% if admin?(current_user) %>
+                    <%= link_to 'Редактировать', edit_user_path(user) %>
                     <% if !current_user?(user) %>
                       <%= link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены?" } %>
                     <% end %>
-                  </td>
                   <% end %>
+                  </td>
                 </tr>
             <% end %>
             </tbody>
