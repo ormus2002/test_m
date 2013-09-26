@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :fio, :dr, :role_id
+  attr_accessible :fio, :dr, :role_id, :group_id
 
   validates :fio,  presence: true, length: { maximum: 50 }
 

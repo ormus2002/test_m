@@ -10,7 +10,7 @@
       <div>
         <table class="table table-hover">
           <thead><tr>
-            <th>Группа</th>
+            <th>Наименование</th>
             <th></th>
           </tr></thead>
           <tbody>
@@ -20,7 +20,7 @@
                 <td>
                   <% if admin?(current_user) && group.builtin == 0 %>
                     <%= link_to 'Редактировать', edit_group_path(group) %>
-                    <%= link_to "Удалить", group, method: :delete, data: { confirm: "Вы уверены, что хотите удалить #{group.name}?" } %>
+                    <%= link_to "Удалить", group, method: :delete, data: { confirm: "Вы уверены, что хотите удалить группу #{group.name}?" } %>
                   <% end %>
                 </td>
               </tr>
@@ -28,7 +28,9 @@
           </tbody>
         </table>
       </div>
-      <p> <%= button_to "Новая группа", new_group_path, method: :get, class: "btn btn-large" %></p>
+      <% if admin?(current_user) %>
+        <p> <%= button_to "Новая группа", new_group_path, method: :get, class: "btn btn-large" %></p>
+      <% end %>
     </div>
   </div>
 </div>
