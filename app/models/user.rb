@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   validates :fio,  presence: true, length: { maximum: 50 }
 
   belongs_to :role
+  belongs_to :group
 
 end

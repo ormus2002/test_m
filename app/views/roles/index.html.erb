@@ -20,7 +20,7 @@
                 <td>
                   <% if role.builtin == 0 %>
                     <%= link_to 'Редактировать', edit_role_path(role) %>
-                    <%= link_to "Удалить", role, method: :delete, data: { confirm: "Вы уверены?" } %>
+                    <%= link_to "Удалить", role, method: :delete, data: { confirm: "Вы уверены, что хотите удалить #{role.name}?" } %>
                   <% end %>
                 </td>
               </tr>

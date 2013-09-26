@@ -6,4 +6,5 @@
   <p>Email: <%= @user.email %></p>
   <p>Дата рождения: <%= @user.dr.to_s(:dr) %></p>
   <p>Роль: <%= @user.role.name if !@user.role.nil? %></p>
+  <p>Группа: <%= @user.group.name if !@user.group.nil? %></p>
 </div>

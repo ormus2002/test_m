@@ -4,6 +4,7 @@ TestM::Application.routes.draw do
   resources :users
 
   resources :roles
+  resources :groups
 
   root to: 'static_pages#home'
 

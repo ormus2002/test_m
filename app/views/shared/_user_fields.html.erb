@@ -6,3 +6,6 @@
 
   <div>Роль<br />
     <%= f.collection_select(:role_id, Role.all, :id, :name) %></div>
+  
+  <div>Группа<br />
+    <%= f.collection_select(:group_id, Group.all, :id, :name) %></div>
