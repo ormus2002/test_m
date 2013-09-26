@@ -1,36 +1,29 @@
 <% provide(:title, 'Группы') %>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <%= render 'shared/menu' %>
-    </div>
-    <div class="span10">
-      <h3>Группы</h3>
-      <div>
-        <table class="table table-hover">
-          <thead><tr>
-            <th>Наименование</th>
-            <th></th>
-          </tr></thead>
-          <tbody>
-          <% for group in @groups %>
-              <tr>
-                <td><%= link_to group.name, group %></td>
-                <td>
-                  <% if admin?(current_user) && group.builtin == 0 %>
-                    <%= link_to 'Редактировать', edit_group_path(group) %>
-                    <%= link_to "Удалить", group, method: :delete, data: { confirm: "Вы уверены, что хотите удалить группу #{group.name}?" } %>
-                  <% end %>
-                </td>
-              </tr>
+<h3>Группы</h3>
+<div>
+<table class="table table-hover">
+  <thead><tr>
+    <th>Наименование</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+  <% for group in @groups %>
+      <tr>
+        <td><%= link_to group.name, group %></td>
+        <td>
+          <% if admin?(current_user) && group.builtin == 0 %>
+            <p class="pull-right"><%= link_to 'Редактировать', edit_group_path(group) %>
+              &nbsp;|&nbsp;
+              <%= link_to "Удалить", group, method: :delete, data: { confirm: "Вы уверены, что хотите удалить группу #{group.name}?" } %>
+            </p>
           <% end %>
-          </tbody>
-        </table>
-      </div>
-      <% if admin?(current_user) %>
-        <p> <%= button_to "Новая группа", new_group_path, method: :get, class: "btn btn-large" %></p>
-      <% end %>
-    </div>
-  </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 </div>
+<% if admin?(current_user) %>
+<p> <%= button_to "Новая группа", new_group_path, method: :get, class: "btn btn-large" %></p>
+<% end %>

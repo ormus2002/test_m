@@ -1,5 +1,5 @@
 <% provide(:title, @user.fio) %>
-<div>
+
   <h1>
     <%= @user.fio %>
   </h1>
@@ -7,4 +7,6 @@
   <p>Дата рождения: <%= @user.dr.to_s(:dr) %></p>
   <p>Роль: <%= @user.role.name if !@user.role.nil? %></p>
   <p>Группа: <%= @user.group.name if !@user.group.nil? %></p>
-</div>
+  <% if !@user.manager.nil? %>
+    <p>Подчинен менеджеру: <%= @user.manager.fio %></p>
+  <% end %>

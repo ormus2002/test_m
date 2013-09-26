@@ -9,12 +9,24 @@
 </head>
 <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <% if user_signed_in? && admin?(current_user)%>
+          <div class="span2">
+            <%= render 'shared/menu' %>
+          </div>
+          <div class="span10">
+        <% else %>
+          <div class="container">
+        <% end %>
+
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

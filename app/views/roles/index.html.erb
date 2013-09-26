@@ -1,34 +1,27 @@
 <% provide(:title, 'Роли') %>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <%= render 'shared/menu' %>
-    </div>
-    <div class="span10">
-      <h3>Роли</h3>
-      <div>
-        <table class="table table-hover">
-          <thead><tr>
-            <th>Наименование</th>
-            
-          </tr></thead>
-          <tbody>
-          <% for role in @roles %>
-              <tr>
-                <td><%= link_to role.name, role %></td>
-                <td>
-                  <% if role.builtin == 0 %>
-                    <%= link_to 'Редактировать', edit_role_path(role) %>
-                    <%= link_to "Удалить", role, method: :delete, data: { confirm: "Вы уверены, что хотите удалить #{role.name}?" } %>
-                  <% end %>
-                </td>
-              </tr>
+<h3>Роли</h3>
+<div>
+<table class="table table-hover">
+  <thead><tr>
+    <th>Наименование</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+  <% for role in @roles %>
+      <tr>
+        <td><%= link_to role.name, role %></td>
+        <td>
+          <% if role.builtin == 0 %>
+            <p class="pull-right"><%= link_to 'Редактировать', edit_role_path(role) %>
+              &nbsp;|&nbsp;
+              <%= link_to "Удалить", role, method: :delete, data: { confirm: "Вы уверены, что хотите удалить #{role.name}?" } %>
+            </p>
           <% end %>
-          </tbody>
-        </table>
-      </div>
-      <p> <%= button_to "Новая роль", new_role_path, method: :get, class: "btn btn-large" %></p>
-    </div>
-  </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 </div>
+<p> <%= button_to "Новая роль", new_role_path, method: :get, class: "btn btn-large" %></p>

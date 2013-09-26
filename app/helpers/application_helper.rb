@@ -12,7 +12,19 @@ module ApplicationHelper
   end
 
   def admin?(user)
-    !user.role.nil? && user.role.name == 'Администратор'
+    !user.role.nil? && user.role.name == "Администратор"
+  end
+
+  def manager?(user)
+    !user.role.nil? && user.role.name == "Менеджер"
+  end
+
+  def worker?(user)
+    !user.role.nil? && user.role.name == "Работник"
+  end
+
+  def bux?(user)
+    !user.role.nil? && user.role.name == "Бухгалтер"
   end
 
   def current_user?(user)

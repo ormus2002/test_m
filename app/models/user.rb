@@ -6,11 +6,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :fio, :dr, :role_id, :group_id
+  attr_accessible :fio, :dr, :role_id, :group_id, :manager_id, :visible_for_bux
 
   validates :fio,  presence: true, length: { maximum: 50 }
 
   belongs_to :role
   belongs_to :group
 
+  has_many :subordinates, class_name: "User",
+           foreign_key: "manager_id"
+
+  belongs_to :manager, class_name: "User"
 end
