@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if manager?(current_user)
       @users = User.paginate(page: params[:page], conditions: ['manager_id = ? OR id = ?', current_user.id, current_user.id])
     elsif worker?(current_user)
-      @users = current_user
+      @users = User.paginate(page: params[:page], conditions: ['id = ?', current_user.id])
     elsif bux?(current_user)
       @users = User.paginate(page: params[:page], conditions: ['visible_for_bux = ? OR id = ?', true, current_user.id])
     else
