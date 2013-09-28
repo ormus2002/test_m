@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class GroupsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :check_if_role
   before_filter :check_if_admin, except: [:index, :show]
   before_filter :check_if_builtin,  only: [:edit, :update, :destroy]
 

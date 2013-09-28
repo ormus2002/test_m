@@ -11,13 +11,24 @@ class UsersController < ApplicationController
       @users = User.paginate(page: params[:page], conditions: ['id = ?', current_user.id])
     elsif bux?(current_user)
       @users = User.paginate(page: params[:page], conditions: ['visible_for_bux = ? OR id = ?', true, current_user.id])
-    else
+    elsif admin?(current_user)
       @users = User.paginate(page: params[:page])
+    else
+      render_403
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    if current_user?(user) || admin?(current_user)
+      @user = user
+    elsif manager?(current_user) && (user.manager_id == current_user.id)
+      @user = user
+    elsif bux?(current_user) && (user.visible_for_bux)
+      @user = user
+    else
+      render_403
+    end
   end
 
   def edit

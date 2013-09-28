@@ -13,4 +13,7 @@ class ApplicationController < ActionController::Base
       render_403 unless admin?(current_user)
     end
 
+    def check_if_role
+      render_403 if current_user.role.nil?
+    end
 end
