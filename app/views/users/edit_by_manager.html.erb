@@ -1,0 +1,20 @@
+<% provide(:title, @user.fio) %>
+
+<%= form_for (@user) do |f| %>
+    <h1>
+      <%= @user.fio %>
+    </h1>
+    <p>Email: <%= @user.email %></p>
+    <p>Дата рождения: <%= @user.dr.to_s(:dr) %></p>
+    <p>Роль: <%= @user.role.name if !@user.role.nil? %></p>
+    <p>Группа: <%= @user.group.name if !@user.group.nil? %></p>
+    <% if !@user.manager.nil? %>
+        <p>Подчинен менеджеру: <%= @user.manager.fio %></p>
+    <% end %>
+
+    <div><label class="checkbox inline">
+      <%= f.check_box :visible_for_bux %> Доступен бухгалтеру<br />
+    </label></div>
+
+    <div><%= f.submit "Сохранить", class: "btn btn-large btn-primary" %></div>
+<% end %>

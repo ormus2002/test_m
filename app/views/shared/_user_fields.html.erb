@@ -1,6 +1,8 @@
   <div>ФИО<br />
   <%= f.text_field :fio, :autofocus => true %></div>
 
-  <div>Дата рождения<br />
-  <%= f.date_select :dr, use_two_digit_numbers: true, start_year: 1900 %></div>
+  <div>Дата рождения<br /></div>
 
+  <div id="dr"><div class="input-append date">
+    <%= f.text_field :dr, class: "span2", value: f.object.dr.to_s(:dr) %>
+    <span class="add-on"><i class="icon-th"></i></span></div></div>

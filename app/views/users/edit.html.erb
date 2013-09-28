@@ -1,3 +1,5 @@
+<% provide(:title, @user.fio) %>
+
 <%= form_for (@user) do |f| %>
     <%= render 'shared/user_fields', f: f %>
 
@@ -10,11 +12,9 @@
     <div>Подчинен менеджеру<br />
       <%= f.collection_select(:manager_id, User.where('role_id = 3'), :id, :fio, include_blank: true) %></div>
 
-    <% if manager?(current_user) || admin?(current_user) %>
-      <div><label class="checkbox inline">
-        <%= f.check_box :visible_for_bux %> Доступен бухгалтеру<br />
-      </label></div>
-    <% end %>
+    <div><label class="checkbox inline">
+      <%= f.check_box :visible_for_bux %> Доступен бухгалтеру<br />
+    </label></div>
 
     <div><%= f.submit "Сохранить", class: "btn btn-large btn-primary" %></div>
 <% end %>

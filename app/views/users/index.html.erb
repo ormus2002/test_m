@@ -25,12 +25,12 @@
           <td><%= user.group.name if !user.group.nil? %></td>
           <td><%= user.manager.fio if !user.manager.nil? %></td>
           <td><%= "Да" if user.visible_for_bux %></td>
-          <td><% if admin?(current_user) %>
+          <td><% if admin?(current_user) || manager?(current_user) %>
                 <%= link_to 'Редактировать', edit_user_path(user) %>
-                <% if !current_user?(user) %>
-                  &nbsp;|&nbsp;
-                  <%= link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены, что хотите удалить пользователя #{user.fio}?" } %>
-                <% end %>
+              <% end %>
+              <% if admin?(current_user) && !current_user?(user) %>
+                &nbsp;|&nbsp;
+                <%= link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены, что хотите удалить пользователя #{user.fio}?" } %>
               <% end %></td>
 
         </tr>
