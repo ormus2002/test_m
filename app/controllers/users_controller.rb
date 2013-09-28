@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     else
       render_403
     end
+    @users = @users.includes([:role, :group])
   end
 
   def show

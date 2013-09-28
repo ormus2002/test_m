@@ -16,7 +16,7 @@
       <th>Доступен бухгалтеру</th>
     </tr></thead>
     <tbody>
-    <% for user in @users %>
+    <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.fio, user %></td>
           <td><%= user.email %></td>
