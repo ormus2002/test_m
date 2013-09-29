@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :check_if_admin,  only: :destroy
   before_filter :check_roles_groups, only: :update
   before_filter :check_if_admin_or_manager, only: [:edit, :update]
+  before_filter :find_user, only: [:edit, :update, :destroy]
 
   def index
     if manager?(current_user)
@@ -34,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     if admin?(current_user)
       render 'users/edit'
     else
@@ -43,21 +43,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if manager?(current_user)
-      update_by_manager
+      @user.update_attributes(visible_for_bux: params[:user][:visible_for_bux])
     else
-      if @user.update_attributes(params[:user])
-        flash[:success] = "Профиль успешно обновлен"
-        redirect_to @user
-      else
-        render 'edit'
-      end
-    end
-  end
-
-  def update_by_manager
-    if @user.update_attributes(visible_for_bux: params[:user][:visible_for_bux])
+      @user.update_attributes(params[:user])
+    end  
+    if @user.errors.empty?
       flash[:success] = "Профиль успешно обновлен"
       redirect_to @user
     else
@@ -66,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    @user.destroy
     flash[:success] = "Пользователь удален."
     redirect_to users_path
   end
@@ -78,14 +69,19 @@ class UsersController < ApplicationController
         group_t = Group.find(params[:user][:group_id])
         if (group_t.builtin == 1) && (role_t.builtin == 3 || role_t.builtin == 5)
           flash[:error] = "#{role_t.name} не может иметь доступ в группу #{group_t.name}."
-          @user = User.find(params[:id])
+          find_user
           render 'edit'
         end
         if (group_t.builtin == 2) && (role_t.builtin == 2)
           flash[:error] = "#{role_t.name} не может иметь доступ в группу #{group_t.name}."
-          @user = User.find(params[:id])
+          find_user
           render 'edit'
         end
       end
+    end
+    
+    def find_user
+      @user = User.where(id: params[:id]).first
+      render_404 unless @user
     end
 end

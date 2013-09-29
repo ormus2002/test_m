@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, :check_if_role
   before_filter :check_if_admin, except: [:index, :show]
   before_filter :check_if_builtin,  only: [:edit, :update, :destroy]
+  before_filter :find_group,  only: [:show]
 
   def index
     @groups = Group.all
@@ -14,11 +15,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
   end
 
   def edit
-    
   end
 
   def update
@@ -47,8 +46,13 @@ class GroupsController < ApplicationController
   end
 
   private
+    def find_group
+      @group = Group.where(id: params[:id]).first
+      render_404 unless @group 
+    end
+    
     def check_if_builtin
-      @group = Group.find(params[:id])       
+      find_group
       render_403 unless @group.builtin == 0
     end
 
