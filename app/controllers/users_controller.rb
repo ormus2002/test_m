@@ -8,17 +8,16 @@ class UsersController < ApplicationController
 
   def index
     if manager?(current_user)
-      @users = User.paginate(page: params[:page], conditions: ['manager_id = ? OR id = ?', current_user.id, current_user.id])
+      @users = User.paginate(page: params[:page], conditions: ['manager_id = ? OR id = ?', current_user.id, current_user.id]).includes([:role, :group])
     elsif worker?(current_user)
-      @users = User.paginate(page: params[:page], conditions: ['id = ?', current_user.id])
+      @users = User.paginate(page: params[:page], conditions: ['id = ?', current_user.id]).includes([:role, :group])
     elsif bux?(current_user)
-      @users = User.paginate(page: params[:page], conditions: ['visible_for_bux = ? OR id = ?', true, current_user.id])
+      @users = User.paginate(page: params[:page], conditions: ['visible_for_bux = ? OR id = ?', true, current_user.id]).includes([:role, :group])
     elsif admin?(current_user)
-      @users = User.paginate(page: params[:page])
+      @users = User.paginate(page: params[:page]).includes([:role, :group])
     else
       render_403
     end
-    @users = @users.includes([:role, :group])
   end
 
   def show
