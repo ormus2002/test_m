@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
            foreign_key: "manager_id"
 
   belongs_to :manager, class_name: "User"
+
+  has_many :uploaded_files
 end

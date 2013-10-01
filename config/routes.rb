@@ -5,6 +5,7 @@ TestM::Application.routes.draw do
 
   resources :roles
   resources :groups
+  resources :uploaded_files
 
   root to: 'static_pages#home'
 

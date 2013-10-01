@@ -1,0 +1,30 @@
+<% provide(:title, 'Файлы') %>
+
+<h3>Мои файлы</h3>
+
+<div class="flickr_pagination">
+  <%= will_paginate :container => false %>
+</div>
+
+<div>
+  <table class="table table-hover">
+    <thead><tr>
+      <th>Файл</th>
+      <th>Загружен</th>
+    </tr></thead>
+    <tbody id="uploaded_files">
+        <div>
+          <%= render @uploaded_files %>
+        </div>
+    </tbody>
+  </table>
+</div>
+
+<div class="flickr_pagination">
+  <%= will_paginate :container => false %>
+</div>
+
+<%= form_for UploadedFile.new, html: {multipart: true} do |f| %>
+  <%= f.label :mydoc, "Загрузить файл:" %>
+  <%= f.file_field :mydoc, multiple: true, name: "uploaded_file[mydoc]", class: "btn" %>
+<% end %>

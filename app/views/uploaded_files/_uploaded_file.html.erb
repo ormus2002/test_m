@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to uploaded_file.name, uploaded_file.mydoc_url %></td>
+  <td><%= uploaded_file.created_at.to_s(:dr)  %></td>
+  <td><%= link_to 'Редактировать', edit_uploaded_file_path(uploaded_file) %>
+       &nbsp;|&nbsp;
+      <%= link_to "Удалить", uploaded_file, method: :delete, data: { confirm: "Вы уверены, что хотите удалить файл #{uploaded_file.mydoc_url}?" } %>
+  </td>
+</tr>

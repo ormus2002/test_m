@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926201934) do
+ActiveRecord::Schema.define(:version => 20131001161503) do
 
   create_table "groups", :force => true do |t|
     t.integer  "builtin",    :default => 0, :null => false
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20130926201934) do
     t.string   "name"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "uploaded_files", :force => true do |t|
+    t.string   "mydoc"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
