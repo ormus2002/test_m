@@ -24,7 +24,7 @@
   <%= will_paginate :container => false %>
 </div>
 
-<%= form_for UploadedFile.new, html: {multipart: true} do |f| %>
+<%= form_for UploadedFile.new do |f| %>
   <%= f.label :mydoc, "Загрузить файл:" %>
-  <%= f.file_field :mydoc, multiple: true, name: "uploaded_file[mydoc]", class: "btn" %>
+  <%= f.file_field :mydoc, name: "uploaded_file[mydoc]", class: "btn" %>
 <% end %>

@@ -1,0 +1,5 @@
+<% if @uploaded_file.new_record? %>
+    alert("Ошибка загрузки файла: <%= j @uploaded_file.errors.full_message.join(', ').html %>");
+<% else %>
+    $("#uploaded_files").prepend("<%= j render(@uploaded_file) %>");
+<% end %>
