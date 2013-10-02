@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-fileupload/basic
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require_tree .
+//= require jquery-fileupload/basic
