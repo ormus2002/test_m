@@ -30,7 +30,7 @@
   <span class="btn btn-success fileinput-button">
     <i class="glyphicon glyphicon-plus"></i>
     <span>Файл&hellip; </span>
-    <%= f.file_field :mydoc, name: "uploaded_file[mydoc]" %>
+    <%= f.file_field :mydoc, name: "uploaded_file[mydoc]", multiple: true %>
   </span>
       
 <% end %>
