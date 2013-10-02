@@ -16,7 +16,7 @@ class UploadedFilesController < ApplicationController
   end
 
   def create
-    #params[:uploaded_file].merge!(user_id: current_user.id)
+    params[:uploaded_file].merge!(user_id: current_user.id)
     @uploaded_file = UploadedFile.create(params[:uploaded_file])
   end
 

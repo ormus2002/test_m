@@ -26,10 +26,10 @@
 </div>
 
 <%= form_for UploadedFile.new do |f| %>
-  <%= f.label :mydoc, "Загрузить файл:" %>
+  <%= f.label :mydoc, "Загрузить файлы:" %>
   <span class="btn btn-success fileinput-button">
     <i class="glyphicon glyphicon-plus"></i>
-    <span>Файл&hellip; </span>
+    <span>Файлы&hellip; </span>
     <%= f.file_field :mydoc, name: "uploaded_file[mydoc]", multiple: true %>
   </span>
       
