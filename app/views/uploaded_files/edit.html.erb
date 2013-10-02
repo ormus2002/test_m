@@ -1,0 +1,12 @@
+<% provide(:title, @uploaded_file.name) %>
+
+<%= form_for (@uploaded_file) do |f| %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+    
+  <div><%= f.submit "Сохранить", class: "btn btn-large btn-primary" %></div>
+  <p><%= link_to "Назад", uploaded_files_path %></p>
+<% end %>

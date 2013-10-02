@@ -11,6 +11,7 @@
     <thead><tr>
       <th>Файл</th>
       <th>Загружен</th>
+      <th>Кем загружен</th>
     </tr></thead>
     <tbody id="uploaded_files">
         <div>
@@ -26,5 +27,10 @@
 
 <%= form_for UploadedFile.new do |f| %>
   <%= f.label :mydoc, "Загрузить файл:" %>
-  <%= f.file_field :mydoc, name: "uploaded_file[mydoc]", class: "btn" %>
+  <span class="btn btn-success fileinput-button">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Файл&hellip; </span>
+    <%= f.file_field :mydoc, name: "uploaded_file[mydoc]" %>
+  </span>
+      
 <% end %>

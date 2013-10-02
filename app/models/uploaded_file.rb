@@ -10,7 +10,7 @@ class UploadedFile < ActiveRecord::Base
   scope :desc, order("created_at DESC")
 
   def default_name
-    self.name ||= File.basename(mydoc.filename, '.*').titleize if mydoc
+    self.name ||= File.basename(mydoc.filename) if mydoc
 
   end
 
