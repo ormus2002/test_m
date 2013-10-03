@@ -1,0 +1,10 @@
+<h1><%= @event.name %></h1>
+
+<p class="info">Опубликовано <%= @event.published_on.strftime("%d.%m.%Y") %></p>
+
+<%= simple_format @event.content %>
+
+<p>
+  <%= link_to "Редактировать", edit_event_path(@event) %> |
+  <%= link_to "Назад", events_path %>
+</p>

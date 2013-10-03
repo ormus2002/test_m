@@ -1,0 +1,21 @@
+<h1>События</h1>
+
+<div id="events">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= I18n.localize(@date, format: :my) %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+      <%= date.day %>
+      <% if @events_by_date[date] %>
+          <ul>
+            <% @events_by_date[date].each do |event| %>
+                <li><%= link_to event.name, event %></li>
+            <% end %>
+          </ul>
+      <% end %>
+  <% end %>
+</div>
+
+<p> <%= button_to "Создать", new_event_path, method: :get, class: "btn btn-large btn-primary" %></p>

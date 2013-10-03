@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001161503) do
+ActiveRecord::Schema.define(:version => 20131003171303) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.date     "published_on"
+    t.text     "content"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.integer  "builtin",    :default => 0, :null => false

@@ -20,7 +20,7 @@
         <tr>
           <td><%= link_to user.fio, user %></td>
           <td><%= user.email %></td>
-          <td><%= user.dr.to_s(:dr) %></td>
+          <td><%= user.dr.strftime("%d.%m.%Y") %></td>
           <td><%= user.role.name if !user.role.nil? %></td>
           <td><%= user.group.name if !user.group.nil? %></td>
           <td><%= user.manager.fio if !user.manager.nil? %></td>
