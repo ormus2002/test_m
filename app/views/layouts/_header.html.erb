@@ -1,9 +1,9 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Пример", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
+      <%= link_to "Пример", root_path, id: "logo", class: "brand" %>
+      <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav pull-right" id="main-menu-right">
           <% if user_signed_in? %>
             <% if admin?(current_user) %>
               <li><%= link_to "Администрирование", '/admin' %></li>
@@ -13,9 +13,18 @@
               <li><%= link_to "Группы", groups_path %></li>
               <li><%= link_to "Пользователи", users_path %></li>
             <% end %>
+          <% end %>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Стиль<b class="caret"></b></a>
+              <ul id="sheetswitch" class="dropdown-menu">
+                <li><a class='swatch' name='cerulian'>Cerulian</a></li>
+                <li><a class='swatch' name='cosmo'>Cosmo</a></li>
+                <li><a class='swatch' name='flatly'>Flatly</a></li>
+              </ul>
+          </li>
+          <% if user_signed_in? %>
             <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b>
-                </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Профиль", user_path(current_user) %></li>
                   <li><%= link_to "Учетная запись", edit_user_registration_path %></li>
@@ -29,7 +38,7 @@
             <li><%= link_to "Войти", new_user_session_path %></li>
           <% end %>
         </ul>
-      </nav>
+      </div>
     </div>
   </div>
-</header>
+</div>

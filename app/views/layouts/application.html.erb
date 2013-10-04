@@ -2,6 +2,7 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
+  <link href="/styles/bootstrap.min_cerulian.css?body=1" class="switch" media="all" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -20,10 +21,14 @@
           <div class="container">
         <% end %>
 
-          <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-          <% end %>
-          <%= yield %>
+        <% flash.each do |type, message| %>
+          <div class="alert <%= bootstrap_class_for(type) %> fade in">
+            <button class="close" data-dismiss="alert">×</button>
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= yield %>
         </div>
       </div>
     </div>

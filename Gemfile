@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'bootstrap-datepicker-rails'
 gem 'carrierwave'
 

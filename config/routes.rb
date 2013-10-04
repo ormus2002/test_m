@@ -10,7 +10,7 @@ TestM::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/admin', to: 'admin#index' 
+  match '/admin', to: 'admin#index'
 
 # The priority is based upon order of creation:
   # first created -> highest priority.

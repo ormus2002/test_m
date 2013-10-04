@@ -2,8 +2,8 @@
 
 <h3>Мои файлы</h3>
 
-<div class="flickr_pagination">
-  <%= will_paginate :container => false %>
+<div class="pagination">
+  <%= will_paginate %>
 </div>
 
 <div>
@@ -21,8 +21,8 @@
   </table>
 </div>
 
-<div class="flickr_pagination">
-  <%= will_paginate :container => false %>
+<div class="pagination">
+  <%= will_paginate %>
 </div>
 
 <%= form_for UploadedFile.new do |f| %>
