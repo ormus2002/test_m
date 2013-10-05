@@ -4,7 +4,7 @@
     <%= @user.fio %>
   </h1>
   <p>Email: <%= @user.email %></p>
-  <p>Дата рождения: <%= @user.dr.strftime("%d.%m.%Y") %></p>
+  <p>Дата рождения: <%= @user.dr.strftime("%d.%m.%Y") if @user.dr %></p>
   <p>Роль: <%= @user.role.name if !@user.role.nil? %></p>
   <p>Группа: <%= @user.group.name if !@user.group.nil? %></p>
   <% if !@user.manager.nil? %>
